@@ -1,0 +1,25 @@
+name: Code Review
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  review-code:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Set Up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+
+    - name: Run Your Code Review
+      run: python ./action/actions.py
